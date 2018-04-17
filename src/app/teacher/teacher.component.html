@@ -1,0 +1,63 @@
+<div class="container" style="background-color: white; width: 100%;margin-left: 150px">
+
+<h1> Teacher </h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Admin</th>
+    <th>Classes</th>
+    <th>Comments</th>
+    <th>Fee</th>
+    <th>Form</th>
+  </tr>
+  <tr *ngFor='let teacher of teachers'>
+    <a style="color: blue" routerLink="/home">adm</a>
+    <td>{{teacher.name}}</td>
+    <td>{{teacher.email}}</td>
+    <td>{{teacher.classes}}</td>
+    <td>{{teacher.comments}}</td>
+    <td>{{teacher.fee}}</td>
+    <td>{{teacher.form}}</td>
+  </tr>
+</table>
+</div>
+<!DOCTYPE html>
+<html>
+<style>
+table, th , td  {
+  border: 1px solid grey;
+  border-collapse: collapse;
+  padding: 5px;
+}
+table tr:nth-child(odd) {
+  background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+  background-color: #ffffff;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+<table>
+  <tr ng-repeat="x in names">
+    
+  </tr>
+</table>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("customers.php")
+    .then(function (response) {$scope.names = response.data.records;});
+});
+</script>
+
+</body>
+</html>
